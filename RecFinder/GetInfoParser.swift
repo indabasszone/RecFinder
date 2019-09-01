@@ -86,11 +86,11 @@ class GetInfoParser: NSObject, XMLParserDelegate {
             }
         }
         
-        //Returns the list of obscure artists
+        //Returns the list of matching artists
         return self.matchingArtists
     }
     
-    //Returns the corresponding list of listener counts for all obscure artists
+    //Returns the corresponding list of matching attributes for all matching artists
     func getMatchingAttribute() -> [String] {
         return self.matchingAttributes
     }
@@ -100,7 +100,6 @@ class GetInfoParser: NSObject, XMLParserDelegate {
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         
         //Checks to see if an error occurred with the API; aborts parsing if so
-        //Will result in the parser returning empty lists in the above functions
         if elementName == "lfm" {
             if attributeDict["status"] == "failed" {
                 parser.abortParsing()
