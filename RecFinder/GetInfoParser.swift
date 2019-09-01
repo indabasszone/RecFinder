@@ -54,7 +54,7 @@ class GetInfoParser: NSObject, XMLParserDelegate {
     }
     
     //MARK: Private Functions
-    //Function to find which similarArtists fall under the listener limit
+    //Function to find which similarArtists meet the specified criteria
     func getMatchingArtists() -> [String]? {
         //Goes through every artist in the similarArtists array
         for artist in artists {
@@ -63,7 +63,7 @@ class GetInfoParser: NSObject, XMLParserDelegate {
             artistFix = artistFix.replacingOccurrences(of: "&", with: "%26")
             currentArtist = artist
             
-            //For some reason I made the urlString separately here but this is same as in ViewController
+            //For some reason I made the urlString separately here
             let urlString = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=d77c476954f65dcebba5122c6a43dafa&artist=" + artistFix
             
             guard let lfmURL = URL(string: urlString) else {
